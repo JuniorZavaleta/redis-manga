@@ -25,4 +25,6 @@ with open('./mangalabels.csv') as csvfile:
     reader.next()
     i = 1
     for row in reader:
-        r.sadd('M{0}P{1}'.format(row[0], row[1]), *set(row[2].split('-')))
+        for i in range(12):
+            if row[i+2] == '1':
+                r.sadd('M{0}P{1}'.format(row[0], row[1]), (i+1))
